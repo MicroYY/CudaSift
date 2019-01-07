@@ -667,7 +667,7 @@ __global__ void ComputeOrientations(cudaTextureObject_t texObj, SiftPoint *d_Sif
     int bin = 16.0f*atan2f(dy, dx)/3.1416f + 16.5f;
     if (bin>31)
       bin = 0;
-    float grad = sqrtf(dx*dx + dy*dy);
+    float grad = sqrtf(dx * dx + dy*dy);
     atomicAdd(&hist[bin], grad*gauss[xd]*gauss[yd]);
   }
   __syncthreads();
